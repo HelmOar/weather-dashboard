@@ -7,6 +7,7 @@ var iconEl = document.getElementById("weather-icon");
 // var cityName = getElementById("city-name");
 var humidityEl = document.getElementById("humidity");
 var windEl = document.getElementById("wind-speed");
+// var forecast = querySelector("forecast");
 // var currentTime = dayjs().format('dddd, MMM D, YYYY h:mm A');
 
 //https://openweathermap.org/img/wn/10d@2x.png
@@ -15,7 +16,7 @@ var apiKey = "9f9f70b3b395ca9a8a718b7f8b260804";
 
 function getWeather () {
     //current weather request from open weather API
-         var city = cityEl.value;
+        var city = cityEl.value;
         var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
        fetch(queryURL)
@@ -25,21 +26,43 @@ function getWeather () {
 
         .then(function(data) {
             console.log(data);
-            var history = JSON.parse(localStorage.getItem("history")) || [];
 
+            var history = JSON.parse(localStorage.getItem("history")) || [];
             history.push(data.name);
             localStorage.setItem("history", JSON.stringify(history));
+
             cityNameEl.textContent = data.name;
             var link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             iconEl.setAttribute("src", link);
-            currentTempEl.textContent = Math.round(data.main.temp ) + "°C";
-            humidityEl.textContent = data.main.humidity + "%";
-            windEl.textContent = data.wind.speed + " km/h";
+            currentTempEl.textContent = "Temperature " + Math.round(data.main.temp ) + "°C";
+            humidityEl.textContent = "Humidity "+ data.main.humidity + "%";
+            windEl.textContent = "Wind speed "+ data.wind.speed + " km/h";
             }) ;                                            
 
 }
 
 searchEl.addEventListener( "click", getWeather)
+
+function getForcast () {
+   var cityForcast = cityEl.value; 
+    var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?id=${city}&units=metric&appid=${apiKey}`;
+    
+    fetch(forecastQueryURL)
+    .then(function(response) {
+        return response.json();
+    })
+
+    .then(function(data) {
+    console.log(data);
+          
+    });
+}
+searchEl.addEventListener( "click", getForcast)
+
+//  fivedayEl.classList.remove("d-none");
+
+
+
 
 function renderHistory (){
     var history = JSON.parse(localStorage.getItem("history")) || [];
@@ -50,7 +73,7 @@ function renderHistory (){
         li.setAttribute("data-city", city);
         li.setAttribute("class", "list-group-item");
         document.getElementById("history").appendChild(li);
-        
+
     }
     
 }
