@@ -15,7 +15,7 @@ var fivedayEl = document.getElementById("fiveday-header");
 //assigning a unique API to a variable
 var apiKey = "9f9f70b3b395ca9a8a718b7f8b260804";
 
-function getWeather () {
+function getWeather (cityName) {
     //current weather request from open weather API
         var city = cityEl.value;
         var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
@@ -63,34 +63,39 @@ function getForcast () {
 searchEl.addEventListener( "click", getForcast)
 
  fivedayEl.classList.remove("d-none");
+//  var forecastEls = document.querySelectorAll(".forecast");    
 
-// var forecastEls = document.querySelectorAll(".forecast");
-// for (var i = 0; i < forecastEls.length; i++) {
-//     forecastEls[i].innerHTML = "";
+// function renderForcast(){
+ 
+// }
+
+//   
 
  
 
 //create buttons for 
 //
-var button = document.createElement("button");
+var button
+var historyContainer = document.getElementById("history")
 
 function renderHistory (){
     var history = JSON.parse(localStorage.getItem("history")) || [];
     for (var i = 0; i < history.length; i++) {
         var city = history[i];
-        // var button = document.createElement("button");
+        button = document.createElement("button");
         button.textContent = city;
         button.setAttribute("data-city", city);
         button.setAttribute("class", "list-group-item");
-        document.getElementById("history").appendChild(button);
+        historyContainer.appendChild(button);
 
     }
     
 }
 renderHistory();
 
-button.addEventListener("click", function () {
-    EventTarget.value = button.textContent;
+historyContainer.addEventListener("click", function (e) {
+    e.preventDefault();
+    cityEl.value = e.target.textContent;
     getWeather();
 
 })
