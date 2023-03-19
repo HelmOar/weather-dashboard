@@ -8,7 +8,7 @@ var iconEl = document.getElementById("weather-icon");
 var humidityEl = document.getElementById("humidity");
 var windEl = document.getElementById("wind-speed");
 var clearEl = document.getElementById("clear-history");
-var forecastEls = document.querySelectorAll("forecast"); 
+var forecastEl = document.querySelectorAll("forecast"); 
 var fivedayEl = document.getElementById("fiveday-header");
 
 //https://openweathermap.org/img/wn/10d@2x.png
@@ -67,14 +67,23 @@ function getForcast () {
     
 searchEl.addEventListener( "click", getForcast)
 
- fivedayEl.classList.remove("d-none");
-//  var forecastEls = document.querySelectorAll(".forecast");    
+fivedayEl.classList.remove("d-none");
+var forecastDate= document.querySelectorAll(".forecast");    
 
-// function renderForcast(){
- 
-// }
-
-//  
+function renderForcast(){
+    for (i = 0; i < forecastEl.length; i++) {
+        forecastEl[i].innerHTML = "";
+        
+        var forecastDate = new Date(response.data);
+        var forecastDay = forecastDate.getDate();
+        var forecastMonth = forecastDate.getMonth();
+        var forecastYear = forecastDate.getFullYear();
+        var forecastDateEl = document.createElement("p");
+        forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
+        forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
+        forecastEl[i].append(forecastDateEl);
+    }
+}
 //create buttons for 
 //
 var button
@@ -92,7 +101,7 @@ function renderHistory (){
         button.setAttribute("class", "form-control d-block bg-white");
     }
     
-}
+};
 
 
 historyContainer.addEventListener("click", function (e) {
@@ -107,9 +116,10 @@ historyContainer.addEventListener("click", function (e) {
 
 // Clear History button
 clearEl.addEventListener("click", function () {
-    preventDefault()
+    // preventDefault()
     localStorage.clear();
     searchHistory = [];
+    historyContainer.innerHTML = "";
     
 })
 searchEl.addEventListener( "click", function () {
@@ -118,4 +128,3 @@ searchEl.addEventListener( "click", function () {
 })
 
 renderHistory();
-
