@@ -92,19 +92,30 @@ var forecastDate= document.querySelectorAll(".forecast");
 
 function renderForcast(data){
 
-    for (i = 0; i <4; i++) {
-        forecastEl[i].innerHTML = "";
+    console.log(data.list);
+
+    for (i = 0; i <5; i++) {
         
-        var forecastDate = new Date();
-        var forecastDay = forecastDate.getDate();
-        var forecastMonth = forecastDate.getMonth();
-        var forecastYear = forecastDate.getFullYear();
-        var forecastDateEl = document.createElement("p");
-        var forecastImg = document.createElement("img");
-        forecastImg.setAttribute("src", "https://openweathermap.org/img/wn/" + response.data[i].weather[0].icon + ".png");
-        forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
-        forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
-        forecastEl[i].append(forecastDateEl);
+
+         
+        
+        // var forecastDate = new Date();
+        // var forecastDay = forecastDate.getDate();
+        // var forecastMonth = forecastDate.getMonth();
+        // var forecastYear = forecastDate.getFullYear();
+        // var forecastDateEl = document.createElement("p");
+        var link = `https://openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
+        var forcastCard = document.getElementById("forcast");
+        var forecastImg = link
+        forcastCard.appendChild(forecastImg);
+        forecastImg.setAttribute("src", link);
+        forecastImg.setAttribute("class", "forecastImg");
+        
+
+        
+        // forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
+        // forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
+        // forecastEl[i].append(forecastDateEl);
     }
 }
 
