@@ -10,6 +10,8 @@ var windEl = document.getElementById("wind-speed");
 var clearEl = document.getElementById("clear-history");
 var forecastEl = document.querySelectorAll("forecast"); 
 var fivedayEl = document.getElementById("fiveday-header");
+var lon = 0;
+var lat = 0;
 
 //https://openweathermap.org/img/wn/10d@2x.png
 //assigning a unique API to a variable
@@ -27,7 +29,15 @@ function getWeather (cityName) {
 
         .then(function(data) {
             console.log(data);
-            
+            console.log(data.coord);
+
+
+            lon = data.coord.lon;
+            lat = data.coord.lat;
+            console.log(lon);
+
+
+            getForcast(data);
 
             var history = JSON.parse(localStorage.getItem("history")) || [];
             console.log(history);
@@ -51,17 +61,22 @@ function getWeather (cityName) {
 
 
 
-function getForcast () {
+function getForcast (data) {
    var cityForcast = cityEl.value; 
-   var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityForcast}&units=metric&appid=${apiKey}`;
-//    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+   var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=metric&appid=${apiKey}`;
+//    
+console.log(forecastQueryURL.data);
     fetch(forecastQueryURL)
     .then(function(response) {
+        console.log(response);
+
+
         return response.json();
     })
 
     .then(function(data) {
-    console.log(data);
+        console.log(data);
+    renderForcast(data);
     }) ;
 }
     
@@ -75,7 +90,7 @@ searchEl.addEventListener( "click", getForcast)
 fivedayEl.classList.remove("d-none");
 var forecastDate= document.querySelectorAll(".forecast");    
 
-function renderForcast(){
+function renderForcast(data){
 
     for (i = 0; i <4; i++) {
         forecastEl[i].innerHTML = "";
