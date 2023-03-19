@@ -36,7 +36,7 @@ function getWeather (cityName) {
 
             history.push(data.name);
             }
-            localStorage.setItem(city, data);
+            localStorage.setItem(city, JSON.stringify(data));
 
            
             cityNameEl.textContent = data.name;
@@ -54,7 +54,7 @@ function getWeather (cityName) {
 function getForcast () {
    var cityForcast = cityEl.value; 
    var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityForcast}&units=metric&appid=${apiKey}`;
-    
+//    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
     fetch(forecastQueryURL)
     .then(function(response) {
         return response.json();
@@ -66,10 +66,10 @@ function getForcast () {
 }
     
 searchEl.addEventListener( "click", getForcast)
-for (var i = 0; i < forecastEl.length; i++) {
-    getItem = localStorage.getItem(city);
-    console.log(getItem);
-}
+// for (var i = 0; i < forecastEl.length; i++) {
+//     getItem = JSON.parse(localStorage.getItem(city));
+//     console.log(getItem);
+// }
    
 
 fivedayEl.classList.remove("d-none");
@@ -80,7 +80,7 @@ function renderForcast(){
     for (i = 0; i <4; i++) {
         forecastEl[i].innerHTML = "";
         
-        var forecastDate = new Date(response.data);
+        var forecastDate = new Date();
         var forecastDay = forecastDate.getDate();
         var forecastMonth = forecastDate.getMonth();
         var forecastYear = forecastDate.getFullYear();
