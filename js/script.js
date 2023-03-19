@@ -27,10 +27,15 @@ function getWeather (cityName) {
 
         .then(function(data) {
             console.log(data);
-
+            
 
             var history = JSON.parse(localStorage.getItem("history")) || [];
+            console.log(history);
+            if (history.includes(data.name)) {
+            } else {
+
             history.push(data.name);
+            }
             localStorage.setItem("history", JSON.stringify(history));
 
            
@@ -44,7 +49,7 @@ function getWeather (cityName) {
 
 }
 
-searchEl.addEventListener( "click", getWeather)
+
 
 function getForcast () {
    var cityForcast = cityEl.value; 
@@ -69,10 +74,7 @@ searchEl.addEventListener( "click", getForcast)
  
 // }
 
-//   
-
- 
-
+//  
 //create buttons for 
 //
 var button
@@ -87,11 +89,11 @@ function renderHistory (){
         button.setAttribute("data-city", city);
         button.setAttribute("class", "list-group-item");
         historyContainer.appendChild(button);
-
+        button.setAttribute("class", "form-control d-block bg-white");
     }
     
 }
-renderHistory();
+
 
 historyContainer.addEventListener("click", function (e) {
     e.preventDefault();
@@ -105,9 +107,15 @@ historyContainer.addEventListener("click", function (e) {
 
 // Clear History button
 clearEl.addEventListener("click", function () {
+    preventDefault()
     localStorage.clear();
     searchHistory = [];
     
 })
+searchEl.addEventListener( "click", function () {
+    getWeather();
+   
+})
+
 renderHistory();
 
