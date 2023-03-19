@@ -36,7 +36,7 @@ function getWeather (cityName) {
 
             history.push(data.name);
             }
-            localStorage.setItem("history", JSON.stringify(history));
+            localStorage.setItem(city, data);
 
            
             cityNameEl.textContent = data.name;
@@ -66,12 +66,18 @@ function getForcast () {
 }
     
 searchEl.addEventListener( "click", getForcast)
+for (var i = 0; i < forecastEl.length; i++) {
+    getItem = localStorage.getItem(city);
+    console.log(getItem);
+}
+   
 
 fivedayEl.classList.remove("d-none");
 var forecastDate= document.querySelectorAll(".forecast");    
 
 function renderForcast(){
-    for (i = 0; i < forecastEl.length; i++) {
+
+    for (i = 0; i <4; i++) {
         forecastEl[i].innerHTML = "";
         
         var forecastDate = new Date(response.data);
@@ -79,18 +85,23 @@ function renderForcast(){
         var forecastMonth = forecastDate.getMonth();
         var forecastYear = forecastDate.getFullYear();
         var forecastDateEl = document.createElement("p");
+        var forecastImg = document.createElement("img");
+        forecastImg.setAttribute("src", "https://openweathermap.org/img/wn/" + response.data[i].weather[0].icon + ".png");
         forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
         forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
         forecastEl[i].append(forecastDateEl);
     }
 }
+
 //create buttons for 
 //
 var button
 var historyContainer = document.getElementById("history")
 
 function renderHistory (){
+   
     var history = JSON.parse(localStorage.getItem("history")) || [];
+    console.log( "history", history);
     for (var i = 0; i < history.length; i++) {
         var city = history[i];
         button = document.createElement("button");
