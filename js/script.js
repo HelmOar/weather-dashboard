@@ -109,19 +109,14 @@ function renderForcast(data){
         
          
         
-      `https://openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
+      `//openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
 
         // var forcastCard = document.getElementById("forcast");
         // var forecastImg = link
         // forcastCard.appendChild(forecastImg);
-        // forecastImg.setAttribute("src", link);
-        // forecastImg.setAttribute("class", "forecastImg");
-        
-        // forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
-        // forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
-        // forecastEl[i].append(forecastDateEl);
-    }
-}
+    
+}};
+
 
 //create buttons for 
 //
