@@ -104,13 +104,12 @@ function renderForcast(data){
         var link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
      
      
-        divEl.classList.add(`card${[i]}`);`) 
+        divEl.classList.add(`card${[i]}`);
           
         
          
         
-      `//openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
-
+  
         // var forcastCard = document.getElementById("forcast");
         // var forecastImg = link
         // forcastCard.appendChild(forecastImg);
