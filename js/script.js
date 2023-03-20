@@ -65,7 +65,7 @@ function getWeather (cityName) {
 
 function getForcast (data) {
 //    var cityForcast = cityEl.value; 
-   var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&units=metric&appid=${apiKey}`;
+   var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 //    
 console.log(forecastQueryURL.data);
     fetch(forecastQueryURL)
@@ -96,16 +96,17 @@ function renderForcast(data){
 
     console.log(data.list);
 
-    for (i = 0; i <5; i++) {
+    for (i = 5; i <40; i=i+8) {
 
-        var divEL = document.getElementById(`card${[i]}`);
-        var date = document.getElementById(`date-${[i+1]}`);
-        var icon = document.getElementById(`forecast-icon-${[i+1]}`);
-        var temp = document.getElementById(`temp-${[i+1]}`);
-        var humid = document.getElementById(`humid-${[i+1]}`);
-        var wind = document.getElementById(`win-${[i+1]}`);
+        var divEL = document.getElementById(`card-${[i]}`);
+        var date = document.getElementById(`date-${[i]}`);
+        var icon = document.getElementById(`forecast-icon-${[i]}`);
+        var temp = document.getElementById(`temp-${[i]}`);
+        var humid = document.getElementById(`humid-${[i]}`);
+        var wind = document.getElementById(`win-${[i]}`);
         var link = `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
-     console.log(link);
+     console.log(divEL);
+     console.log(temp);
 
      temp.textContent = "Temperature " + Math.round(data.list[i].main.temp ) + "°C";
      humid.textContent = "Humidity "+ data.list[i].main.humidity + "%";
