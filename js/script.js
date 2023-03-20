@@ -96,7 +96,7 @@ function renderForcast(data){
 
     for (i = 0; i <5; i++) {
         
-
+        fetch 5
          
         
         // var forecastDate = new Date();
@@ -104,6 +104,7 @@ function renderForcast(data){
         // var forecastMonth = forecastDate.getMonth();
         // var forecastYear = forecastDate.getFullYear();
         // var forecastDateEl = document.createElement("p");
+
         var link = `https://openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
         var forcastCard = document.getElementById("forcast");
         var forecastImg = link
