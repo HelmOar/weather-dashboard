@@ -88,14 +88,14 @@ searchEl.addEventListener( "click", getForcast)
    
 
 fivedayEl.classList.remove("d-none");
-var forecastDate= document.querySelectorAll(".forecast");    
+// var forecastDate= document.querySelectorAll(".forecast");    
 
 function renderForcast(data){
 
     console.log(data.list);
 
     for (i = 0; i <5; i++) {
-        var divEL = getElementById(`card${[i]}`);
+        var divEL = document.getElementById(`card${[i]}`);
         var date = document.getElementById(`date${[i]}`);
         var icon = document.getElementById(`forecast-icon${[i]}`);
         var temp = document.getElementById(`temp${[i]}`);
@@ -104,15 +104,7 @@ function renderForcast(data){
         var link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
      
      
-        divEl.classList.add(`card${[i]}`);
-          
-        
-         
-        
-  
-        // var forcastCard = document.getElementById("forcast");
-        // var forecastImg = link
-        // forcastCard.appendChild(forecastImg);
+
     
 }};
 
