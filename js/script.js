@@ -95,24 +95,27 @@ function renderForcast(data){
     console.log(data.list);
 
     for (i = 0; i <5; i++) {
+        var divEL = getElementById(`card${[i]}`);
+        var date = document.getElementById(`date${[i]}`);
+        var icon = document.getElementById(`forecast-icon${[i]}`);
+        var temp = document.getElementById(`temp${[i]}`);
+        var humid = document.getElementById(`humid${[i]}`);
+        var wind = document.getElementById(`wind${[i]}`);
+        var link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+     
+     
+        divEl.classList.add(`card${[i]}`);`) 
+          
         
-        fetch 5
          
         
-        // var forecastDate = new Date();
-        // var forecastDay = forecastDate.getDate();
-        // var forecastMonth = forecastDate.getMonth();
-        // var forecastYear = forecastDate.getFullYear();
-        // var forecastDateEl = document.createElement("p");
+      `https://openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
 
-        var link = `https://openweathermap.org/img/wn/${data.list[0].icon}@2x.png`;
-        var forcastCard = document.getElementById("forcast");
-        var forecastImg = link
-        forcastCard.appendChild(forecastImg);
-        forecastImg.setAttribute("src", link);
-        forecastImg.setAttribute("class", "forecastImg");
-        
-
+        // var forcastCard = document.getElementById("forcast");
+        // var forecastImg = link
+        // forcastCard.appendChild(forecastImg);
+        // forecastImg.setAttribute("src", link);
+        // forecastImg.setAttribute("class", "forecastImg");
         
         // forecastDateEl.setAttribute("class", "mt-3 mb-0 forecast-date");
         // forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
