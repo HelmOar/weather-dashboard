@@ -82,14 +82,23 @@ console.log(forecastQueryURL.data);
     }) ;
 }
     
-searchEl.addEventListener( "click", getForcast);
+// searchEl.addEventListener( "click", getForcast); 
+var rowEl = document.getElementById ("row");
+
+searchEl.addEventListener( "click", function(){
+    //call to other function to remove hidden elements
+    fivedayEl.classList.remove("d-none");
+    rowEl.classList.remove("d-none");
+    getForcast()
+});
+
 // for (var i = 0; i < forecastEl.length; i++) {
 //     getItem = JSON.parse(localStorage.getItem(city));
 //     console.log(getItem);
 // }
    
 
-fivedayEl.classList.remove("d-none");
+
 // var forecastDate= document.querySelectorAll(".forecast");    
 
 function renderForcast(data){
