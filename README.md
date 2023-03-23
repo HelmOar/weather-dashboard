@@ -1,33 +1,29 @@
 # weather-dashboard
-# <Your-Project-Title>
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+weather-dashboard is an app that retrieves data from the openweathermap.org API to provide weather forecast for multple global cities. This allows the user to plan any trip accordingly. weather-dashboard runs in the browser and features dynamically updated HTML and CSS to clearly display the aforementioned data when the user inputs the chosen city into the search. The user is then presented with current weather conditions for that city including temperature, humidity and windspeed as well as a despcriptive icon and the city name. In addition there is a five-day forecast which uses a separate API to connect with the data. 
+The city, chosen by the user is stored in local storage and then rendered on same page in a searchable button, where the data can be accessed again. 
+This weather dashboard app is mobile compatible
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+## License
 
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+[License](/LICENSE)
+Copyright (c) 2023 Caro
 
 ## Usage
+![screenshot](assets/weather-dashboard.png)
 
-Provide instructions and examples for use. Include screenshots as needed.
+## Credits
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+chelmore1@bigpond.com
+
+## Badges
+
+
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+    
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
     ```md
     ![alt text](assets/images/screenshot.png)
