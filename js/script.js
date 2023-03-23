@@ -139,15 +139,23 @@ function renderHistory (){
    
     var history = JSON.parse(localStorage.getItem("history")) || [];
     console.log( "history", history);
-    for (var i = 0; i < history.length; i++) {
-        var city = history[i];
-        button = document.createElement("button");
-        button.textContent = city;
-        button.setAttribute("data-city", city);
-        button.setAttribute("class", "list-group-item");
-        historyContainer.appendChild(button);
-        button.setAttribute("class", "form-control d-block bg-white");
+    if (history.length > 0) {
+        for (var i = 0; i < history.length; i++) {
+            var city = history[i];
+            button = document.createElement("button");
+            button.textContent = city;
+            button.setAttribute("data-city", city);
+            button.setAttribute("class", "list-group-item");
+            historyContainer.appendChild(button);
+            button.setAttribute("class", "form-control d-block bg-white");
+    
+        }
+        var lastCity = history[history.length-1];
+        cityEl.value = lastCity
+        getWeather();
+
     }
+    
     
 };
 
