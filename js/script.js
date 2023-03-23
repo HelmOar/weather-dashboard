@@ -119,7 +119,7 @@ function renderForcast(data){
      console.log(temp);
 
      var unformattedDate = data.list[i].dt_txt
-     var formattedDate = dayjs.extend("DD_MM_YYYY")
+     var formattedDate = dayjs().format("dddd DD/MM/YYYY") 
 
      temp.textContent = "Temperature " + Math.round(data.list[i].main.temp ) + "°C";
      humid.textContent = "Humidity "+ data.list[i].main.humidity + "%";
