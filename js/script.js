@@ -13,12 +13,12 @@ var fivedayEl = document.getElementById("fiveday-header");
 var lon = 0;
 var lat = 0;
 
-//https://openweathermap.org/img/wn/10d@2x.png
 //assigning a unique API to a variable
 var apiKey = "9f9f70b3b395ca9a8a718b7f8b260804";
 
 function getWeather (cityName) {
-    //current weather request from open weather API
+
+//current weather request from open weather API
         var city = cityEl.value;
         var queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
@@ -50,7 +50,8 @@ function getWeather (cityName) {
             localStorage.setItem(city, JSON.stringify(data));
             localStorage.setItem("history", JSON.stringify(history));
 
-           
+            
+        //    display data on page
             cityNameEl.textContent = data.name;
             var link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
             iconEl.setAttribute("src", link);
