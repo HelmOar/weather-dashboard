@@ -118,11 +118,15 @@ function renderForcast(data){
      console.log(divEL);
      console.log(temp);
 
+     var unformattedDate = data.list[i].dt_txt
+     var formattedDate = dayjs.extend("DD_MM_YYYY")
+
      temp.textContent = "Temperature " + Math.round(data.list[i].main.temp ) + "°C";
      humid.textContent = "Humidity "+ data.list[i].main.humidity + "%";
      date.textContent = data.list[i].dt_txt;
      wind.textContent = "Wind speed "+ data.list[i].wind.speed + " km/h";
      icon.setAttribute("src", link);
+     date.textContent = formattedDate;
     
 }};
 
