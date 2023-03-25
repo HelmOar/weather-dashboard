@@ -37,6 +37,7 @@ function getWeather (cityName) {
             console.log(lon);
             console.log(lat);
 
+            //get forcast function to display daily weather
 
             getForcast(data);
 
@@ -62,10 +63,10 @@ function getWeather (cityName) {
 
 }
 
-
+//function to retrieve 5 day forca
 
 function getForcast (data) {
-//    var cityForcast = cityEl.value; 
+
    var forecastQueryURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 //    
 console.log(forecastQueryURL.data);
@@ -93,14 +94,7 @@ searchEl.addEventListener( "click", function(){
     getForcast()
 });
 
-// for (var i = 0; i < forecastEl.length; i++) {
-//     getItem = JSON.parse(localStorage.getItem(city));
-//     console.log(getItem);
-// }
-   
-
-
-// var forecastDate= document.querySelectorAll(".forecast");    
+//function to render forcast to page
 
 function renderForcast(data){
 
@@ -130,10 +124,12 @@ function renderForcast(data){
     
 }};
 
-//create buttons for 
-//
+//create buttons for history
+
 var button
 var historyContainer = document.getElementById("history")
+
+//function to retrieve and display history
 
 function renderHistory (){
    
@@ -150,10 +146,11 @@ function renderHistory (){
             button.setAttribute("class", "form-control d-block bg-white");
     
         }
+        //get last city searched
         var lastCity = history[history.length-1];
         cityEl.value = lastCity
         getWeather();
-
+        getForcast();
     }
     
     
@@ -166,9 +163,6 @@ historyContainer.addEventListener("click", function (e) {
     getWeather();
 
 })
-//event listener for button .. clicked run a function to get the nme of the button... 
-//event.target.value... get weather and pass in the name for the weather and update...
-
 
 // Clear History button
 clearEl.addEventListener("click", function () {
