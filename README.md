@@ -14,6 +14,11 @@ Copyright (c) 2023 Caro
 ## Usage
 ![screenshot](assets/weather-dashboard.png)
 
+
+https://user-images.githubusercontent.com/122151785/227680551-5064bdb1-c288-420d-8d9d-b3ced75966db.mp4
+
+
+
 ## Credits
 
 chelmore1@bigpond.com
